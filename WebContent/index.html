@@ -1,33 +1,53 @@
 <!DOCTYPE html>
-<html ng-app="main">
+<html ng-app="bookmark">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">  
-    <title>BookMarks</title>
-</head>
-
-<body>
-
-	<div class="container">
-		<div ng-view></div>
-	</div>
-	
-    <!-- Libraries -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">    
+       
+   	<!-- Libraries -->
     <script src="resources/js/angular.min.js"></script>
     <script src="resources/js/angular-cookies.min.js"></script>
     <script src="resources/js/angular-resource.min.js"></script>
-    <script src="resources/js/angular-touch.min.js"></script>
-    <script src="resources/js/angular-animate.min.js"></script>
-    <script src="resources/js/angular-aria.min.js"></script>
-    <script src="resources/js/angular-material.min.js"></script>
-    <script src="resources/js/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
     
-    <!-- app files -->
-    <script src="resources/js/controllers/router.js"></script>
-    <script src="resources/js/controllers/mainController.js"></script>
+    <title>BookMarks</title>
+</head>
+
+<body ng-controller="bookmarkController">
+
+	<div class="container" >
+		<h1>Page View</h1>
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+	        		</h4>
+	      		</div>
+		      	<div id="collapse1" class="panel-collapse collapse">
+		        	<div class="panel-body">Holi !</div>
+	      		</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+       				</h4>
+      			</div>
+      			<div id="collapse2" class="panel-collapse collapse">
+        			<div class="panel-body"></div>
+    			</div>
+  			</div>
+		</div>
+	</div>
+ 
+ 	<!-- app files -->
+    <script src="resources/js/controllers/bookmark.js"></script>
     
 </body>
 
