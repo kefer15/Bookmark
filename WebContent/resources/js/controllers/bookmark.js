@@ -5,10 +5,14 @@ angular.module('bookmark', [
 	'ngCookies'
 ])
 
-.constant('INSTANCE_URL', 'https://df-bookmarks-test.enterprise.dreamfactory.com') //'http://localhost'
-
+.constant('INSTANCE_URL', 'https://df-bookmarks-test.enterprise.dreamfactory.com')
+// Online https://df-bookmarks-test.enterprise.dreamfactory.com
+// Kevin http://localhost
+// Yuliana http://localhost:8081
 
 .constant('APP_API_KEY', '24122c4f438ef83fee04c70375209ca1b5062d4d06a45fbeff8d16f3de3aceb8')
+// Online 24122c4f438ef83fee04c70375209ca1b5062d4d06a45fbeff8d16f3de3aceb8
+// Yuliana caf80a2fe1a2edc7425e23b840dee6dbe5e3592c5bcc7e472eda0af308d774fb
 
 .run([
   '$cookies', 'APP_API_KEY', '$http',
