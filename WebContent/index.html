@@ -3,39 +3,54 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+    
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+    
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">    
-       
-   	<!-- Libraries -->
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">   
+   	<!-- Angular JS -->
     <script src="resources/js/angular.min.js"></script>
     <script src="resources/js/angular-cookies.min.js"></script>
     <script src="resources/js/angular-resource.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <!-- JQuery -->
+    <script src="resources/js/jquery-1.12.1.min.js"></script>
     
     <title>BookMarks</title>
 </head>
 
 <body ng-controller="bookmarkController">
 	<div class="container" >
-		<h1>Page View</h1>
+		<h1>Page 1</h1>
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Section 1</a>
 	        		</h4>
 	      		</div>
 		      	<div id="collapse1" class="panel-collapse collapse">
-		        	<div class="panel-body">Holi !</div>
+		        	<div class="panel-body">
+		        		<fieldset>
+						   	<legend>Paragraph 1</legend>
+							 <button type="button" class="btn btn-default">Bookmark 1</button>
+						</fieldset>
+						<fieldset>
+						   	<legend>Paragraph 2</legend>
+							 <button type="button" class="btn btn-default">Bookmark 1</button>
+							 <button type="button" class="btn btn-default">Bookmark 2</button>
+						</fieldset>
+		        	</div>
 	      		</div>
 			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Section 2</a>
        				</h4>
       			</div>
       			<div id="collapse2" class="panel-collapse collapse">
@@ -47,7 +62,7 @@
  
  	<!-- app files -->
     <script src="resources/js/controllers/bookmark.js"></script>
-    
+
 </body>
 
 </html>
