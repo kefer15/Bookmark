@@ -44,20 +44,39 @@
 		        	<div class="panel-body">
 		        		<fieldset ng-repeat="paragraph in section.paragraphs">
 						   	<legend>
-						   		{{ paragraph.LABEL_TITLE}} 
-						   		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
+						   		{{ paragraph.LABEL_TITLE}}
+						   		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createModal">
 						   			<i class="fa fa-plus"></i>
 						   		</button>
 						   	</legend>
-							 <button type="button" class="btn btn-default" ng-repeat="bookmark in paragraph.bookmarks">{{ bookmark.NAME }}</button>
+							 <button type="button" class="btn btn-default" ng-repeat="bookmark in paragraph.bookmarks" data-toggle="modal" data-target="#editModal">{{ bookmark.NAME }}</button>
 						</fieldset>
 						<br>
 		        	</div>
 	      		</div>
 			</div>
   			
-  			<!-- Modal -->
-			<div id="myModal" class="modal fade" role="dialog">
+  			<!-- Modal - Create bookmark -->
+			<div id="createModal" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Bookmark: id</h4>
+						</div>
+						<div class="modal-body">
+							<p>Some text in the modal.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-success">Create</button>
+						</div>
+					</div>				
+				</div>
+			</div>
+			
+			<!-- Modal - Edit bookmark -->
+			<div id="editModal" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-sm">
 					<!-- Modal content-->
 					<div class="modal-content">
