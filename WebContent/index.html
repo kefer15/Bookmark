@@ -32,158 +32,170 @@
 
 <body ng-controller="bookmarkController">
 	<div class="container" >
-		<h1>Page: {{ page._id }}</h1>
-		<div class="panel-group" id="accordion" >
-			<div class="panel panel-default" ng-repeat="(indexSection, section) in page.sections">
-				<div class="panel-heading">
-					<h2 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" ng-href="#{{ section._id }}">{{ section.TITLE }}</a>
-	        		</h2>
-	      		</div>
-		      	<div ng-attr-id="{{ section._id }}" class="panel-collapse collapse">
-		        	<div class="panel-body">
-		        		<fieldset ng-repeat="(indexParagraph, paragraph) in section.paragraphs">
-						   	<legend>
-						   		{{ paragraph.LABEL_TITLE}}
-						   		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createModal" ng-click="setCurrentAdd(section._id, paragraph._id, indexSection, indexParagraph)">
-						   			<i class="fa fa-plus"></i>
-						   		</button>
-						   	</legend>
-							 <button type="button" class="btn btn-default" ng-repeat="(indexBookmark, bookmark) in paragraph.bookmarks" data-toggle="modal" data-target="#editModal" ng-click="setCurrentEdit(section._id, paragraph._id, bookmark._id, indexSection, indexParagraph, indexBookmark)">{{ bookmark.NAME }}</button>
-						</fieldset>
-						<br>
-		        	</div>
-	      		</div>
-			</div>
-  			
-  			<!-- Modal - Create bookmark -->
-			<div id="createModal" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">New bookmark</h4>
-						</div>
-						<div class="modal-body">
-							
-							<form class="form-horizontal">
-								<div class="form-group">
-								  	<label for="inputSectionId" class="col-sm-3 control-label">Section Id:</label>
-								  	<div class="col-sm-9">
-								  		<input type="text" class="form-control" id="inputSectionId" placeholder="{{ currentSectionId }}" disabled>
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputParagraphId" class="col-sm-3 control-label">Paragraph Id:</label>
-								  	<div class="col-sm-9">
-								  		<input type="text" class="form-control" id="inputParagraphId" placeholder="{{ currentParagraphId }}" disabled>
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="input_idDis" class="col-sm-3 control-label">_id:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="input_idDis" placeholder="_id" ng-model="form._id">
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputName" class="col-sm-3 control-label">Name:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="input_id" placeholder="Name" ng-model="form.NAME">
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputDefaultValue" class="col-sm-3 control-label">Default Value:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="inputDefaultValue" placeholder="Default Value" ng-model="form.DEFAULT_VALUE">
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputType" class="col-sm-3 control-label">Type:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="form.TYPE">
-								  	</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-9">
-									  	<div class="checkbox">
-									    	<label>
-												<input type="checkbox" ng-model="form.ENABLED"> ENABLED
-											</label>
-									  	</div>
-									</div>
-								</div>
-							</form>
-							
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="create()">Create</button>
-						</div>
-					</div>				
+		<div ng-show="load">
+			<center>
+				<br>
+				<br>
+				<h2>Recargando datos ...</h2>
+				<i class="fa fa-spinner fa-pulse fa-5x"></i>
+			</center>
+		</div>
+		<div ng-hide="load">
+			<h1>Page: {{ page._id }}</h1>
+			<div class="panel-group" id="accordion" >
+				<div class="panel panel-default" ng-repeat="(indexSection, section) in page.sections">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" ng-href="#{{ section._id }}">{{ section.TITLE }}</a>
+		        		</h2>
+		      		</div>
+			      	<div ng-attr-id="{{ section._id }}" class="panel-collapse collapse">
+			        	<div class="panel-body">
+			        		<div  ng-repeat="(indexParagraph, paragraph) in section.paragraphs">
+				        		<fieldset>
+								   	<legend>
+								   		{{ paragraph.LABEL_TITLE}}
+								   		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#createModal" ng-click="setCurrentAdd(section._id, paragraph._id, indexSection, indexParagraph)">
+								   			<i class="fa fa-plus"></i>
+								   		</button>
+								   	</legend>
+									 <button type="button" class="btn btn-default" ng-repeat="(indexBookmark, bookmark) in paragraph.bookmarks" data-toggle="modal" data-target="#editModal" ng-click="setCurrentEdit(section._id, paragraph._id, bookmark._id, indexSection, indexParagraph, indexBookmark)">{{ bookmark.NAME }}</button>
+								</fieldset>
+								<br>
+							</div>
+			        	</div>
+		      		</div>
 				</div>
-			</div>
-			
-			<!-- Modal - Edit bookmark -->
-			<div id="editModal" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Edit bookmark</h4>
-						</div>
-						<div class="modal-body">
-							<form class="form-horizontal">
-								<div class="form-group">
-								  	<label for="inputSectionId" class="col-sm-3 control-label">Section Id:</label>
-								  	<div class="col-sm-9">
-								  		<input type="text" class="form-control" id="inputSectionId" placeholder="{{ currentSectionId }}" disabled>
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputParagraphId" class="col-sm-3 control-label">Paragraph Id:</label>
-								  	<div class="col-sm-9">
-								  		<input type="text" class="form-control" id="inputParagraphId" placeholder="{{ currentParagraphId }}" disabled>
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="input_id" class="col-sm-3 control-label">Current Id:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="input_id" placeholder="{{ form._id }}" disabled>
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputName" class="col-sm-3 control-label">Name:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="input_id" placeholder="Name" ng-model="form.NAME">
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputDefaultValue" class="col-sm-3 control-label">Default Value:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="inputDefaultValue" placeholder="Default Value" ng-model="form.DEFAULT_VALUE">
-								  	</div>
-								</div>
-								<div class="form-group">
-								  	<label for="inputType" class="col-sm-3 control-label">Type:</label>
-								  	<div class="col-sm-9">
-								    	<input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="form.TYPE">
-								  	</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-9">
-									  	<div class="checkbox">
-									    	<label>
-												<input type="checkbox" ng-model="form.ENABLED"> ENABLED
-											</label>
+	  			
+	  			<!-- Modal - Create bookmark -->
+				<div id="createModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">New bookmark</h4>
+							</div>
+							<div class="modal-body">
+								
+								<form class="form-horizontal">
+									<div class="form-group">
+									  	<label for="inputSectionId" class="col-sm-3 control-label">Section Id:</label>
+									  	<div class="col-sm-9">
+									  		<input type="text" class="form-control" id="inputSectionId" placeholder="{{ currentSectionId }}" disabled>
 									  	</div>
 									</div>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">Delete</button>
-							<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="update()">Update</button>
+									<div class="form-group">
+									  	<label for="inputParagraphId" class="col-sm-3 control-label">Paragraph Id:</label>
+									  	<div class="col-sm-9">
+									  		<input type="text" class="form-control" id="inputParagraphId" placeholder="{{ currentParagraphId }}" disabled>
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="input_idDis" class="col-sm-3 control-label">_id:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="input_idDis" placeholder="_id" ng-model="form._id">
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputName" class="col-sm-3 control-label">Name:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="input_id" placeholder="Name" ng-model="form.NAME">
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputDefaultValue" class="col-sm-3 control-label">Default Value:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="inputDefaultValue" placeholder="Default Value" ng-model="form.DEFAULT_VALUE">
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputType" class="col-sm-3 control-label">Type:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="form.TYPE">
+									  	</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-3 col-sm-9">
+										  	<div class="checkbox">
+										    	<label>
+													<input type="checkbox" ng-model="form.ENABLED"> ENABLED
+												</label>
+										  	</div>
+										</div>
+									</div>
+								</form>
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="create()">Create</button>
+							</div>
+						</div>				
+					</div>
+				</div>
+				
+				<!-- Modal - Edit bookmark -->
+				<div id="editModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Edit bookmark</h4>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal">
+									<div class="form-group">
+									  	<label for="inputSectionId" class="col-sm-3 control-label">Section Id:</label>
+									  	<div class="col-sm-9">
+									  		<input type="text" class="form-control" id="inputSectionId" placeholder="{{ currentSectionId }}" disabled>
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputParagraphId" class="col-sm-3 control-label">Paragraph Id:</label>
+									  	<div class="col-sm-9">
+									  		<input type="text" class="form-control" id="inputParagraphId" placeholder="{{ currentParagraphId }}" disabled>
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="input_id" class="col-sm-3 control-label">Current Id:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="input_id" placeholder="{{ form._id }}" disabled>
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputName" class="col-sm-3 control-label">Name:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="input_id" placeholder="Name" ng-model="form.NAME">
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputDefaultValue" class="col-sm-3 control-label">Default Value:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="inputDefaultValue" placeholder="Default Value" ng-model="form.DEFAULT_VALUE">
+									  	</div>
+									</div>
+									<div class="form-group">
+									  	<label for="inputType" class="col-sm-3 control-label">Type:</label>
+									  	<div class="col-sm-9">
+									    	<input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="form.TYPE">
+									  	</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-3 col-sm-9">
+										  	<div class="checkbox">
+										    	<label>
+													<input type="checkbox" ng-model="form.ENABLED"> ENABLED
+												</label>
+										  	</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">Delete</button>
+								<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="update()">Update</button>
+							</div>
 						</div>
 					</div>
 				</div>
