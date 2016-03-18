@@ -5,12 +5,12 @@ angular.module('bookmark', [
 	'ngCookies'
 ])
 
-.constant('INSTANCE_URL', 'http://localhost')
+.constant('INSTANCE_URL', 'http://localhost:8081')
 // Online https://df-bookmarks-test.enterprise.dreamfactory.com
 // Kevin http://localhost
 // Yuliana http://localhost:8081
 
-.constant('APP_API_KEY', '837d4c936a7d41830afd45690d8b2b164535f71b6fd694be6fc947105968b489')
+.constant('APP_API_KEY', 'caf80a2fe1a2edc7425e23b840dee6dbe5e3592c5bcc7e472eda0af308d774fb')
 // Online 24122c4f438ef83fee04c70375209ca1b5062d4d06a45fbeff8d16f3de3aceb8
 // Kevin 837d4c936a7d41830afd45690d8b2b164535f71b6fd694be6fc947105968b489
 // Yuliana caf80a2fe1a2edc7425e23b840dee6dbe5e3592c5bcc7e472eda0af308d774fb
@@ -190,7 +190,7 @@ angular.module('bookmark', [
 		        })
 			});
 		};
-		
+
 		var loadSection = function(idSection, callback) {
 	        return Section.query({id : idSection}).$promise.then(function(result) {
 	        	//console.log('Getting Section data, id: ' + idSection);
@@ -245,11 +245,11 @@ angular.module('bookmark', [
 	        	return callback(result);
 	        });
 		};
-		
+
 		loadPage($scope.idPage, function(){
 			//console.log(JSON.stringify($scope.page));
 		});
-				
+
 		$scope.setCurrentAdd = function(idSection, idParagraph, indexSection, indexParagraph){
 			$scope.currentSectionId = idSection;
 			$scope.currentParagraphId = idParagraph;
