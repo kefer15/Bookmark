@@ -31,20 +31,26 @@
 
 <body ng-controller="bookmarkController">
 	<div class="container" >
-		<h1>Page 1</h1>
-		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
+		<h1>Page: {{ page._id }}</h1>
+		<div class="panel-group" id="accordion" >
+			<div class="panel panel-default" ng-repeat="section in page.sections">
 				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Section 1</a>
-	        		</h4>
+					<h2 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" ng-href="#{{ section._id }}">Section {{section._id}} : {{ section.TITLE }}</a>
+	        		</h2>
 	      		</div>
-		      	<div id="collapse1" class="panel-collapse collapse">
+		      	<div ng-attr-id="{{ section._id }}" class="panel-collapse collapse">
 		        	<div class="panel-body">
 		        		<fieldset>
-						   	<legend>Paragraph 1</legend>
+						   	<legend>
+						   		Paragraph 1
+						   		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
+						   			<i class="fa fa-plus"></i>
+						   		</button>
+						   	</legend>
 							 <button type="button" class="btn btn-default">Bookmark 1</button>
 						</fieldset>
+						<br>
 						<fieldset>
 						   	<legend>Paragraph 2</legend>
 							 <button type="button" class="btn btn-default">Bookmark 1</button>
@@ -53,16 +59,26 @@
 		        	</div>
 	      		</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Section 2</a>
-       				</h4>
-      			</div>
-      			<div id="collapse2" class="panel-collapse collapse">
-        			<div class="panel-body"></div>
-    			</div>
-  			</div>
+  			
+  			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Bookmark: id</h4>
+						</div>
+						<div class="modal-body">
+							<p>Some text in the modal.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-danger">Delete</button>
+							<button type="button" class="btn btn-success">Update</button>
+						</div>
+					</div>				
+				</div>
+			</div>
 		</div>
 	</div>
  
