@@ -222,20 +222,25 @@ angular.module('bookmark', [
 	        	
 				// Get Bookmark data
 				var promiseArr = [];
+				var sequence;
+				
 		        paragraph.BOOKMARK_LIST.forEach(function (obj, i) {
-		            var promise = loadBookmark(obj, function(result){
-		            	paragraph.bookmarks.push(result);
+		        	sequence = Bookmark.query({id : obj}).$promise;
+		        	sequence = sequence.then(function(result){
+		        		paragraph.bookmarks.push(result);
+		        		promiseArr.push(sequence);
+		            }).catch(function(err){
+		                console.log(':c');
 		            });
-		            promiseArr.push(promise);
 		        });
 		        
-		        $q.all(promiseArr).then(function(){
+		        Promise.all(promiseArr).then(function(){
 		        	//console.log(">>>>>>>>>> Continue paragraph here ...");
 		            return callback(paragraph);
 		        })
 	        });
 		};
-		
+		/*
 		var loadBookmark = function(idBookmark, callback) {
 	        return Bookmark.query({id : idBookmark}).$promise.then(function(result) {
 	        	//console.log('Getting Bookmark data, id: ' + idBookmark);
@@ -244,7 +249,7 @@ angular.module('bookmark', [
 	        	return callback(result);
 	        });
 		};
-
+		*/
 		loadPage($scope.idPage, function(){
 			//console.log(JSON.stringify($scope.page));
 		});
