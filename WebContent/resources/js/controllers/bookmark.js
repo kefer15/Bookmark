@@ -166,54 +166,58 @@ angular.module('bookmark', [
 			enabled : true
 		};
 		
-		Page.query({id: $scope.idPage}).$promise.then(function (result) {
-			//console.log('Getting Page data, id: ' + idPage);
-			//console.log(JSON.stringify(result));
-			$scope.page = result;
-			$scope.page.sections = [];
-			
-			// Get Sections data
-			var sequence = Promise.resolve();
-	        
-			$scope.page.SECTION_LIST.forEach(function (objPAG, iPAG) {
-	        	sequence = sequence.then(function(){
-	        		return Section.query({id : objPAG}).$promise;
-	            })
-	            .then(function(result){	            	
-	            	$scope.$apply(function(){	
-	            		var section = result;
-	            		section.paragraphs = [];
-	            		
-	            		// Get Paragraphs data
-	            		var sequencePAR = Promise.resolve();
-	            		section.PARAGRAPH_LIST.forEach(function(objPAR, iPAR){
-	            			sequencePAR = sequencePAR.then(function(){
-	            				return Paragraph.query({id: objPAR}).$promise;
-	            			})
-	            			.then(function(resultPAR){
-	            				var paragraph = resultPAR;
-	            				paragraph.bookmarks = [];
-	            				
-	            				// Get Bookmarks data
-	            				var sequenceBKM = Promise.resolve();
-	            				paragraph.BOOKMARK_LIST.forEach(function(objBKM, iBKM){
-	            					sequenceBKM = sequenceBKM.then(function(){
-	            						return Bookmark.query({id: objBKM}).$promise;
-	            					})
-	            					.then(function(resultBKM){
-	            						paragraph.bookmarks.push(resultBKM);
-	            					});
-	            				});
-	            				
-		            			section.paragraphs.push(resultPAR);
-		            		});
-	            		})
-	            		$scope.page.sections.push(section);
-            		});
-	            });
-	        });
-		});
-
+		var loadPage = function(callback) {
+			Page.query({id: $scope.idPage}).$promise.then(function (result) {
+				//console.log('Getting Page data, id: ' + idPage);
+				//console.log(JSON.stringify(result));
+				$scope.page = result;
+				$scope.page.sections = [];
+				
+				// Get Sections data
+				var sequence = Promise.resolve();
+		        
+				$scope.page.SECTION_LIST.forEach(function (objPAG, iPAG) {
+		        	sequence = sequence.then(function(){
+		        		return Section.query({id : objPAG}).$promise;
+		            })
+		            .then(function(result){	            	
+		            	$scope.$apply(function(){	
+		            		var section = result;
+		            		section.paragraphs = [];
+		            		
+		            		// Get Paragraphs data
+		            		var sequencePAR = Promise.resolve();
+		            		section.PARAGRAPH_LIST.forEach(function(objPAR, iPAR){
+		            			sequencePAR = sequencePAR.then(function(){
+		            				return Paragraph.query({id: objPAR}).$promise;
+		            			})
+		            			.then(function(resultPAR){
+		            				var paragraph = resultPAR;
+		            				paragraph.bookmarks = [];
+		            				
+		            				// Get Bookmarks data
+		            				var sequenceBKM = Promise.resolve();
+		            				paragraph.BOOKMARK_LIST.forEach(function(objBKM, iBKM){
+		            					sequenceBKM = sequenceBKM.then(function(){
+		            						return Bookmark.query({id: objBKM}).$promise;
+		            					})
+		            					.then(function(resultBKM){
+		            						paragraph.bookmarks.push(resultBKM);
+		            					});
+		            				});
+			            			section.paragraphs.push(resultPAR);
+			            		});
+		            		})
+		            		$scope.page.sections.push(section);
+		            		callback();
+	            		});
+		            });
+		        });
+			});
+		}
+		
+		loadPage(function(){});
+		
 		$scope.setCurrentAdd = function(idSection, idParagraph, indexSection, indexParagraph){
 			$scope.currentSectionId = idSection;
 			$scope.currentParagraphId = idParagraph;
@@ -255,7 +259,7 @@ angular.module('bookmark', [
 					delete currentParagraph.bookmarks;
 				
 					Paragraph.update({id : $scope.currentParagraphId}, currentParagraph).$promise.then(function (response) {
-						loadPage($scope.idPage, function(){
+						loadPage(function(){
 							$log.debug('Bookmark has been inserted correctly.');
 						});
 					});
@@ -267,7 +271,7 @@ angular.module('bookmark', [
 		$scope.update = function(){
 			Bookmark.update({id: $scope.currentBookmarkId} , $scope.form).$promise.then(function (response) {
 				if(response.error === undefined) {			
-					loadPage($scope.idPage, function(){
+					loadPage(function(){
 						$log.debug('Bookmark has been updated correctly.');
 					});
 				} else
@@ -284,7 +288,7 @@ angular.module('bookmark', [
 					delete currentParagraph.bookmarks;
 				
 					Paragraph.update({id : $scope.currentParagraphId}, currentParagraph).$promise.then(function (response) {
-						loadPage($scope.idPage, function(){
+						loadPage(function(){
 							$log.debug('Bookmark has been removed correctly.');
 						});
 					});
