@@ -156,8 +156,7 @@ angular.module('bookmark', [
 		$scope.currentBookmarkId = '';
 		$scope.indexSection = -1;
 		$scope.indexParagraph = -1;
-		
-		$scope.message = '';
+		$scope.indexBookmark = -1;
 		
 		$scope.form = {
 			_id : '',
@@ -260,11 +259,30 @@ angular.module('bookmark', [
 				NAME : '',
 				DEFAULT_VALUE : '',
 				TYPE : '',
-				enabled : true
+				ENABLED : true
 			};
 		};
 		
-		$scope.add = function(){
+		$scope.setCurrentEdit = function(idSection, idParagraph, idBookmark, indexSection, indexParagraph, indexBookmark){
+			$scope.currentSectionId = idSection;
+			$scope.currentParagraphId = idParagraph;
+			$scope.currentBookmarkId = idBookmark;
+			$scope.indexSection = indexSection;
+			$scope.indexParagraph = indexParagraph;
+			$scope.indexBookmark = indexBookmark;
+			
+			var currentBookmark = $scope.page.sections[$scope.indexSection].paragraphs[$scope.indexParagraph].bookmarks[$scope.indexBookmark];
+
+			$scope.form = {
+				_id : currentBookmark._id,
+				NAME : currentBookmark.NAME,
+				DEFAULT_VALUE : currentBookmark.DEFAULT_VALUE,
+				TYPE : currentBookmark.TYPE,
+				ENABLED : currentBookmark.ENABLED
+			};
+		};
+		
+		$scope.create = function(){
 			Bookmark.create({resource : [$scope.form]}).$promise.then(function (response) {
 				if(response.error === undefined) {			
 					var currentParagraph = $scope.page.sections[$scope.indexSection].paragraphs[$scope.indexParagraph];
@@ -280,5 +298,33 @@ angular.module('bookmark', [
 					$log.error(response.error.message);
 			});
 		};
+		
+		$scope.update = function(){
+			Bookmark.update({id: $scope.currentBookmarkId} , $scope.form).$promise.then(function (response) {
+				if(response.error === undefined) {			
+					loadPage($scope.idPage, function(){
+						$log.debug('Bookmark has been updated correctly.');
+					});
+				} else
+					$log.error(response.error.message);
+			});
+		};
+		
+		/*$scope.remove = function(){
+			Bookmark.remove({resource : [$scope.form]}).$promise.then(function (response) {
+				if(response.error === undefined) {			
+					var currentParagraph = $scope.page.sections[$scope.indexSection].paragraphs[$scope.indexParagraph];
+					currentParagraph.BOOKMARK_LIST.push($scope.form._id);
+					delete currentParagraph.bookmarks;
+				
+					Paragraph.update({id : $scope.currentParagraphId}, currentParagraph).$promise.then(function (response) {
+						loadPage($scope.idPage, function(){
+							$log.debug('Bookmark has been inserted correctly.');
+						});
+					});
+				} else
+					$log.error(response.error.message);
+			});
+		};*/
 	}
 ]);
