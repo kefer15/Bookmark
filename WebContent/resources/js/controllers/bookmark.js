@@ -5,12 +5,12 @@ angular.module('bookmark', [
 	'ngCookies'
 ])
 
-.constant('INSTANCE_URL', 'http://localhost:8081')
+.constant('INSTANCE_URL', 'http://localhost')
 // Online https://df-bookmarks-test.enterprise.dreamfactory.com
 // Kevin http://localhost
 // Yuliana http://localhost:8081
 
-.constant('APP_API_KEY', 'caf80a2fe1a2edc7425e23b840dee6dbe5e3592c5bcc7e472eda0af308d774fb')
+.constant('APP_API_KEY', '837d4c936a7d41830afd45690d8b2b164535f71b6fd694be6fc947105968b489')
 // Online 24122c4f438ef83fee04c70375209ca1b5062d4d06a45fbeff8d16f3de3aceb8
 // Kevin 837d4c936a7d41830afd45690d8b2b164535f71b6fd694be6fc947105968b489
 // Yuliana caf80a2fe1a2edc7425e23b840dee6dbe5e3592c5bcc7e472eda0af308d774fb
@@ -315,21 +315,22 @@ angular.module('bookmark', [
 			});
 		};
 		
-		/*$scope.remove = function(){
-			Bookmark.remove({resource : [$scope.form]}).$promise.then(function (response) {
+		$scope.remove = function(){
+			Bookmark.remove({id: $scope.currentBookmarkId}).$promise.then(function (response) {
 				if(response.error === undefined) {			
 					var currentParagraph = $scope.page.sections[$scope.indexSection].paragraphs[$scope.indexParagraph];
-					currentParagraph.BOOKMARK_LIST.push($scope.form._id);
+					var index = currentParagraph.BOOKMARK_LIST.indexOf(String($scope.currentBookmarkId));
+					currentParagraph.BOOKMARK_LIST.splice(index, 1);
 					delete currentParagraph.bookmarks;
 				
 					Paragraph.update({id : $scope.currentParagraphId}, currentParagraph).$promise.then(function (response) {
 						loadPage($scope.idPage, function(){
-							$log.debug('Bookmark has been inserted correctly.');
+							$log.debug('Bookmark has been removed correctly.');
 						});
 					});
 				} else
 					$log.error(response.error.message);
 			});
-		};*/
+		};
 	}
 ]);
