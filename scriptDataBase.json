@@ -1,0 +1,683 @@
+db.Page.remove({});
+db.Section.remove({});
+db.Paragraph.remove({});
+db.Bookmark.remove({});
+
+db.Page.insert(
+{
+    '_id' : 'PAG001',
+	'SECTION_LIST' : [ 'SEC001' , 'SEC002' , 'SEC003' , 'SEC004' , 'SEC005']
+}
+);
+
+db.Section.insert(
+{
+    '_id' : 'SEC001',
+    'TITLE' : 'Section 1', 
+    'ORGANIZATION_ID' : '', 
+    'VISIBLE_MOBILE' : 'Y', 
+    'GENERAL_MODEL' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'PURIDIOM_VIEW_ID' : '',
+    'PAGE_TYPE' : '',
+    'SUB_STEP' : '',
+    'VIEW_GROUP_ID' : '',
+    'FULL_BROWSE' : '',
+    'PURIDIOM_PROCESS_ID' : 0,
+    'DOCUMENT_TYPE' : '',
+    'ENABLED' : 'Y',
+	'PARAGRAPH_LIST' : [ 'PAR001' , 'PAR002' ]
+}
+);
+
+db.Section.insert(
+{
+    '_id' : 'SEC002',
+    'TITLE' : 'Section 2', 
+    'ORGANIZATION_ID' : '', 
+    'VISIBLE_MOBILE' : 'Y', 
+    'GENERAL_MODEL' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'PURIDIOM_VIEW_ID' : '',
+    'PAGE_TYPE' : '',
+    'SUB_STEP' : '',
+    'VIEW_GROUP_ID' : '',
+    'FULL_BROWSE' : '',
+    'PURIDIOM_PROCESS_ID' : 0,
+    'DOCUMENT_TYPE' : '',
+    'ENABLED' : 'Y',
+	'PARAGRAPH_LIST' : [ 'PAR003' ]
+}
+);
+
+db.Section.insert(
+{
+    '_id' : 'SEC003',
+    'TITLE' : 'Section 3', 
+    'ORGANIZATION_ID' : '', 
+    'VISIBLE_MOBILE' : 'Y', 
+    'GENERAL_MODEL' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'PURIDIOM_VIEW_ID' : '',
+    'PAGE_TYPE' : '',
+    'SUB_STEP' : '',
+    'VIEW_GROUP_ID' : '',
+    'FULL_BROWSE' : '',
+    'PURIDIOM_PROCESS_ID' : 0,
+    'DOCUMENT_TYPE' : '',
+    'ENABLED' : 'Y',
+	'PARAGRAPH_LIST' : [ 'PAR004' , 'PAR005' , 'PAR006' ]
+}
+);
+
+db.Section.insert(
+{
+    '_id' : 'SEC004',
+    'TITLE' : 'Section 4', 
+    'ORGANIZATION_ID' : '', 
+    'VISIBLE_MOBILE' : 'Y', 
+    'GENERAL_MODEL' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'PURIDIOM_VIEW_ID' : '',
+    'PAGE_TYPE' : '',
+    'SUB_STEP' : '',
+    'VIEW_GROUP_ID' : '',
+    'FULL_BROWSE' : '',
+    'PURIDIOM_PROCESS_ID' : 0,
+    'DOCUMENT_TYPE' : '',
+    'ENABLED' : 'Y',
+	'PARAGRAPH_LIST' : [ 'PAR007' , 'PAR008' , 'PAR009' ]
+}
+);
+
+db.Section.insert(
+{
+    '_id' : 'SEC005',
+    'TITLE' : 'Section 5', 
+    'ORGANIZATION_ID' : '', 
+    'VISIBLE_MOBILE' : 'Y', 
+    'GENERAL_MODEL' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'PURIDIOM_VIEW_ID' : '',
+    'PAGE_TYPE' : '',
+    'SUB_STEP' : '',
+    'VIEW_GROUP_ID' : '',
+    'FULL_BROWSE' : '',
+    'PURIDIOM_PROCESS_ID' : 0,
+    'DOCUMENT_TYPE' : '',
+    'ENABLED' : 'Y',
+	'PARAGRAPH_LIST' : [ 'PAR010' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR001', 
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 1 Section 1',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM001' , 'BKM002' , 'BKM003' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR002',  
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 2 Section 1',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM004' , 'BKM005' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR003',  
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 1 Section 2',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM006' , 'BKM007' , 'BKM008' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR004', 
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 1 Section 3',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM009' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR005',
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 2 Section 3',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM010' , 'BKM011' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR006',  
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 3 Section 3',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR007', 
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 1 Section 4',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM012' , 'BKM013' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR008',  
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 2 Section 4',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM014' , 'BKM015' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR009', 
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 3 Section 4',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM016' ]
+}
+);
+
+db.Paragraph.insert(
+{
+    '_id' : 'PAR010', 
+    'TYPE' : '',
+    'ORGANIZATION_ID' : '',
+    'VISIBLE_MOBILE' : 'Y',
+    'ICON' : '',
+    'BOX_ID' : '',
+    'BOX_MODEL' : '',
+    'PORTLET_TYPE' : '',
+    'BOX_SEQUENCE' : 0,
+    'LABEL_TITLE' : 'Paragraph 1 Section 5',
+    'LABEL_DESCRIPTION' : '',
+    'LAST_CHANGED_BY' : '',
+    'LAST_CHANGED_DATE' : null,
+    'OWNER' : '',
+    'ENABLED' : 'Y',
+    'VISIBLE_BOX' : 'Y',
+    'TYPE_BOX' : '',
+    'PURIDIOM_BOX_ID' : '',
+    'TITLE_DEFAULT' : '',
+    'VALIDATION_SOURCE_DATA' : '',
+    'VALIDATION_FROM_BOX_ID' : '',
+    'VALIDATION_FOR_VIEW' : 'Y',
+    'DOCUMENT_TYPE' : '',
+    'STEP_VALIDATION_ID' : '',
+    'VALIDATION_OBJECT_REFERENCE' : '',
+	'BOOKMARK_LIST' : [ 'BKM017' , 'BKM018' , 'BKM019' , 'BKM020' , 'BKM021' , 'BKM022' , 'BKM023']
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM001',
+    'NAME' : "first_name",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM002',
+    'NAME' : "middle_name",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM003',
+    'NAME' : "last_name",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM004',
+    'NAME' : "age",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'numeric',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM005',
+    'NAME' : "gender",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM006',
+    'NAME' : "address_name",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM007',
+    'NAME' : "address_number",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'numeric',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM008',
+    'NAME' : "address_reference",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM009',
+    'NAME' : "religion",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM010',
+    'NAME' : "company",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM011',
+    'NAME' : "occupation",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM012',
+    'NAME' : "father_name",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM013',
+    'NAME' : "father_age",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'numeric',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM014',
+    'NAME' : "mother_name",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM015',
+    'NAME' : "mother_age",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'numeric',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM016',
+    'NAME' : "birthday",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'date',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM017',
+    'NAME' : "color",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'list',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM018',
+    'NAME' : "date time local",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'date',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM019',
+    'NAME' : "email",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'text',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM020',
+    'NAME' : "month_date",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'date',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM021',
+    'NAME' : "range_boolean",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'boolean',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+
+db.Bookmark.insert(
+{
+    '_id' : 'BKM022',
+    'NAME' : "nicknames",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'list',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);
+db.Bookmark.insert(
+{
+    '_id' : 'BKM023',
+    'NAME' : "week",
+    'DEFAULT_VALUE' : "default",
+    'TYPE' : 'date',
+    'ENABLED' : true,
+	'VALUE' : null
+}
+);

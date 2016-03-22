@@ -5,12 +5,12 @@ angular.module('bookmark', [
 	'ngCookies'
 ])
 
-.constant('INSTANCE_URL', 'https://df-bookmarks-test.enterprise.dreamfactory.com')
+.constant('INSTANCE_URL', 'http://localhost')
 // Online https://df-bookmarks-test.enterprise.dreamfactory.com
 // Kevin http://localhost
 // Yuliana http://localhost:8081
 
-.constant('APP_API_KEY', '24122c4f438ef83fee04c70375209ca1b5062d4d06a45fbeff8d16f3de3aceb8')
+.constant('APP_API_KEY', '837d4c936a7d41830afd45690d8b2b164535f71b6fd694be6fc947105968b489')
 // Online 24122c4f438ef83fee04c70375209ca1b5062d4d06a45fbeff8d16f3de3aceb8
 // Kevin 837d4c936a7d41830afd45690d8b2b164535f71b6fd694be6fc947105968b489
 // Yuliana caf80a2fe1a2edc7425e23b840dee6dbe5e3592c5bcc7e472eda0af308d774fb
@@ -47,7 +47,7 @@ angular.module('bookmark', [
         if (config.method.toLowerCase() === 'post' && config.url.indexOf('/api/v2/user/session') > -1) {
         	delete config.headers['X-DreamFactory-Session-Token'];
         }
-        
+
         return config;
       },
       responseError: function (result) {
@@ -159,6 +159,8 @@ angular.module('bookmark', [
 		$scope.indexParagraph = -1;
 		$scope.indexBookmark = -1;
 		
+		$scope.bookmarks = {};
+		
 		$scope.form = {
 			_id : '',
 			NAME : '',
@@ -170,41 +172,35 @@ angular.module('bookmark', [
 		var loadPage = function(callback) {
 			$scope.load = true;
 			Page.query({id: $scope.idPage}).$promise.then(function (result) {
-				//console.log('Getting Page data, id: ' + idPage);
-				//console.log(JSON.stringify(result));
 				$scope.page = result;
 				$scope.page.sections = [];
-				
-				// Get Sections data
 				var sequence = Promise.resolve();
 		        
 				$scope.page.SECTION_LIST.forEach(function (objPAG, iPAG) {
-		        	sequence = sequence.then(function(){
+		        	sequence = sequence.then(function() {
 		        		return Section.query({id : objPAG}).$promise;
 		            })
-		            .then(function(result){	            	
-		            	$scope.$apply(function(){	
+		            .then(function (result) {	            	
+		            	$scope.$apply(function() {	
 		            		var section = result;
 		            		section.paragraphs = [];
 		            		
-		            		// Get Paragraphs data
 		            		var sequencePAR = Promise.resolve();
-		            		section.PARAGRAPH_LIST.forEach(function(objPAR, iPAR){
-		            			sequencePAR = sequencePAR.then(function(){
+		            		section.PARAGRAPH_LIST.forEach(function(objPAR, iPAR) {
+		            			sequencePAR = sequencePAR.then(function() {
 		            				return Paragraph.query({id: objPAR}).$promise;
 		            			})
-		            			.then(function(resultPAR){
+		            			.then(function(resultPAR) {
 		            				var paragraph = resultPAR;
 		            				paragraph.bookmarks = [];
 		            				
-		            				// Get Bookmarks data
 		            				var sequenceBKM = Promise.resolve();
-		            				paragraph.BOOKMARK_LIST.forEach(function(objBKM, iBKM){
-		            					sequenceBKM = sequenceBKM.then(function(){
+		            				paragraph.BOOKMARK_LIST.forEach(function(objBKM, iBKM) {
+		            					sequenceBKM = sequenceBKM.then(function() {
 		            						return Bookmark.query({id: objBKM}).$promise;
 		            					})
-		            					.then(function(resultBKM){
-		            						$scope.$apply(function(){
+		            					.then(function(resultBKM) {
+		            						$scope.$apply(function() {
 		            							paragraph.bookmarks.push(resultBKM);
 		            						});
 		            					});
@@ -216,9 +212,9 @@ angular.module('bookmark', [
 		            		$scope.load = false;
 		            		callback();
 	            		});
-		            });
-		        });
-			});
+		            });		        	
+		        });				
+			});	
 		}
 		
 		loadPage(function(){});
@@ -300,6 +296,94 @@ angular.module('bookmark', [
 				} else
 					$log.error(response.error.message);
 			});
+		};
+		
+		$scope.saveValues = function(){
+			var bookmarks = [];
+			var flag = true
+			var mistake = [];
+			
+			for(var i = 0; i < $scope.page.sections.length && flag; i++) {
+				for(var j = 0; j < $scope.page.sections[i].paragraphs.length && flag;j++) {
+					for(var k = 0; k < $scope.page.sections[i].paragraphs[j].bookmarks.length && flag; k++) {
+						if($scope.page.sections[i].paragraphs[j].bookmarks[k] !== undefined) {
+							var objBKM = $scope.page.sections[i].paragraphs[j].bookmarks[k];
+							var bkm = {};
+							bkm._id = objBKM._id;
+							bkm.$set = {};
+							
+							switch(objBKM.TYPE) {
+								case "numeric" 	:	if(objBKM.VALUE && !isNaN(Number(objBKM.VALUE))){
+														bkm.$set.VALUE = objBKM.VALUE;
+														bookmarks.push(bkm);
+													} else {
+														flag = false;
+														mistake.push(objBKM.VALUE);
+														mistake.push(objBKM.NAME);
+														mistake.push(objBKM.TYPE);
+													}
+													break;
+													
+								case "text" 	: 	if(objBKM.VALUE && angular.isString(objBKM.VALUE)) {
+														bkm.$set.VALUE = objBKM.VALUE;
+														bookmarks.push(bkm);
+													} else {
+														flag = false;
+														mistake.push(objBKM.VALUE);
+														mistake.push(objBKM.NAME);
+														mistake.push(objBKM.TYPE);
+													}
+													break;
+													
+								case "boolean"	:	if(objBKM.VALUE && (objBKM.VALUE == "true" || objBKM.VALUE == "false")) {
+														bkm.$set.VALUE = objBKM.VALUE;
+														bookmarks.push(bkm);
+													} else {
+														flag = false;
+														mistake.push(objBKM.VALUE);
+														mistake.push(objBKM.NAME);
+														mistake.push(objBKM.TYPE);
+													}
+													break;
+													
+								case "date"		: 	if(objBKM.VALUE && !isNaN(Date.parse(objBKM.VALUE))) {
+														bkm.$set.VALUE = objBKM.VALUE;
+														bookmarks.push(bkm);
+													} else {
+														flag = false;
+														mistake.push(objBKM.VALUE);
+														mistake.push(objBKM.NAME);
+														mistake.push(objBKM.TYPE);
+													}
+													break;
+													
+								case "list"		: 	if(objBKM.VALUE && angular.isArray(objBKM.VALUE.split(","))) {
+														bkm.$set.VALUE = objBKM.VALUE;
+														bookmarks.push(bkm);
+													} else {
+														flag = false;
+														mistake.push(objBKM.VALUE);
+														mistake.push(objBKM.NAME);
+														mistake.push(objBKM.TYPE);
+													}
+													break;						
+							}
+						}
+					}
+				}
+			}
+			
+			if(flag) {
+				Bookmark.update({resource: bookmarks}).$promise.then(function (response) {
+					if(response.error === undefined) {			
+						loadPage(function(){
+							$log.debug('Bookmarks have been updated correctly.');
+						});
+					} else
+						$log.error(response.error.message);
+				});
+			} else
+				console.log("Value '" + mistake[0] + "' of bookmark '" + mistake[1] + "' is not a '" + mistake[2] + "' type");
 		};
 	}
 ]);
