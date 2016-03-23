@@ -437,7 +437,8 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
-	'VALUE' : null
+	'REQUIRED' : true,
+	'VALUE' : null,
 }
 );
 
@@ -448,6 +449,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -459,6 +461,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -470,6 +473,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'numeric',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -481,6 +485,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -492,6 +497,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -503,6 +509,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'numeric',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -514,6 +521,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -525,6 +533,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -536,6 +545,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -547,6 +557,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -558,6 +569,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -569,6 +581,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'numeric',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -580,6 +593,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -591,6 +605,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'numeric',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -602,6 +617,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'date',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -613,6 +629,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'list',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -624,6 +641,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'date',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -635,6 +653,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'text',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -646,6 +665,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'date',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -657,6 +677,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'boolean',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -668,6 +689,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'list',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );
@@ -678,6 +700,7 @@ db.Bookmark.insert(
     'DEFAULT_VALUE' : "default",
     'TYPE' : 'date',
     'ENABLED' : true,
+	'REQUIRED' : true,
 	'VALUE' : null
 }
 );

@@ -31,7 +31,7 @@
 </head>
 
 <body ng-controller="bookmarkController">
-	<div class="container" >
+	<div class="container" ng-hide="mode">
 		<div ng-show="load">
 			<center>
 				<br><br>
@@ -71,11 +71,12 @@
 								   			<i class="fa fa-plus"></i>
 								   		</button>
 							   		</legend>
-							   		<form class="form-horizontal" role="form" ng-repeat="(indexBookmark, bookmark) in paragraph.bookmarks">
+							   		<form name="{{ paragraph._id }}" class="form-horizontal" role="form" ng-repeat="(indexBookmark, bookmark) in paragraph.bookmarks">
 										<div class="form-group"> 
 											<label class="col-lg-2 control-label">{{ bookmark.NAME }}</label>
 											<div class="col-lg-10">
-												<input class="form-control" placeholder="Insert value" ng-model="bookmark.VALUE">
+												<input name="{{ bookmark._id }}" class="form-control" placeholder="Insert value" ng-model="bookmark.VALUE" validation valType="{{ bookmark.TYPE }}" valRequired="{{ bookmark.REQUIRED }}">
+												<p ng-show="{{paragraph._id}}.{{bookmark._id}}.$error.validation" >Value ' {{ bookmark.VALUE }} ' of bookmark ' {{ bookmark.NAME }} ' is not a ' {{ bookmark.TYPE }} ' type</p>
 											</div>
 										</div>
 								  	</form>
@@ -218,9 +219,38 @@
 					</div>
 				</div>
 			</div>
+							   					
+			<button type="button" class="btn btn-success" ng-click="saveValues()">Save Values</button>
+			<button type="button" class="btn btn-primary" ng-click="showValues()">See Values</button>
 		</div>
-		<button type="button" class="btn btn-success" ng-click="saveValues()">Save Values</button>
 	</div>
+	<div class="container" ng-hide="!mode">
+		<div ng-show="load">
+			<center>
+				<br><br>
+				<h2>Loading data ...</h2>
+				<i class="fa fa-spinner fa-pulse fa-5x"></i>
+			</center>
+		</div>
+		<h2>Data</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+			        <th>Bookmark Name</th>
+			        <th>Bookmark Type</th>
+			        <th>Bookmark Value</th>
+		        </tr>
+	        </thead>
+        	<tbody ng-repeat="bookmark in bookmarks">
+		        <tr>
+		        	<td>{{ bookmark.NAME }}</td>
+		        	<td>{{ bookmark.TYPE }}</td>
+		        	<td>{{ bookmark.VALUE }}</td>
+	        	</tr>
+	        </tbody>
+        </table>
+        <button type="button" class="btn btn-danger" ng-click="goBack()">Return</button>
+    </div>
  	
  	<!-- app files -->
     <script src="resources/js/controllers/bookmark.js"></script>
